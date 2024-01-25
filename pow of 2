@@ -1,0 +1,18 @@
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if n == 0:
+            return 1.0
+        elif n < 0:
+            return 1 / self.myPow(x, -n)
+        else:
+            y = self.myPow(x, n // 2)
+            if n % 2 == 0:
+                return y * y
+            else:
+                return y * y * x
+                The method myPow takes two parameters: x (a float) and n (an integer), and it returns a float representing x raised to the power of n.
+In the first if statement, the method checks if n is equal to 0. If it is, the method returns 1.0, as any number raised to the power of 0 is 1.
+In the elif block, if n is negative, the method takes the reciprocal of the result of myPow(x, -n) and returns it. This is because x raised to the power of a negative n is equivalent to 1 divided by x raised to the power of -n.
+In the else block, when n is positive, the method calculates half as the result of myPow(x, n // 2). This is done to optimize the calculation by avoiding redundant computations when n is large.
+Next, the method checks if n is even by using the modulo operator (%). If n is even, the method returns half * half, which is equivalent to x raised to the power of n.
+If n is odd, the method returns half * half * x, which is equivalent to x raised to the power of n.
